@@ -1,0 +1,57 @@
+About steelseries-led
+=====================
+
+steelseries-led is a utility for controlling the backlight of the SteelSeries
+keyboards included in many MSI laptops. The keyboard is broken up into three
+backlight regions (left, middle, and right) which can be set to different
+colors and intensities independently of each other. Using the official Windows
+utility, one can set the color and brightness for the three regions, as well as
+select various other modes such as breathe and wave. The goal of this program
+is to replicate that functionality as well as possibly add additional modes and
+features.
+
+NOTE: While this program may work for other SteelSeries keyboards, it is not
+guaranteed. My development efforts with be focused solely on supporting the
+keyboard included in MSI laptops, specifically the MSI GS60 Ghost. This
+keyboard does not have a model name or number as far as I know, but I believe
+that most MSI gaming laptops use the same one. The Origin EVO15-S keyboard may
+also work with this program since it is just a re-branded Ghost, but again I
+make no guarantees.
+
+Currently, the program is in a very alpha state. The only mode which works
+correctly is normal mode. For the time being, this requires setting the color
+of each section separately, followed by setting the mode to normal.
+
+
+Required packages
+=================
+
+steelseries-led depends on the hidapi library which can be found at:
+http://www.signal11.us/oss/hidapi/
+
+
+Compiling and Running
+=====================
+
+Running 'make' will compile steelseries-led and produce a single executable.
+
+You can run 'steelseries-led help' for details on how to use the program and
+what arguments are supported.
+
+This program must be run with root privileges in order to send data to the
+keyboard. If you want to avoid this, you can either change the permissions of
+the device file manually (i.e. 'chmod o+w /dev/bus/usb/<bus>/<device>', where
+<bus> and <device> can be found by running 'lsusb'), or you can create a udev
+rule to do this for you at boot. I have had very limited success with the udev
+method, since the rules typically get applied very early in the boot process
+before USB devices get initialized.
+
+
+How to report bugs?
+===================
+
+Bugs should be reported to L. Bradley LaBoon <me@bradleylaboon.com>
+
+Please indicate what OS and architecture you are using, as well as output from
+the program showing the bug, if possible. Please read this entire README first,
+as it may be something mentioned above or not yet supported.
